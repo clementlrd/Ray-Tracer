@@ -34,11 +34,32 @@ RGB_color const &Color::getRGBColor() const
 
 /* Color RGB */
 
-/*
-ColorRGB::ColorRGB(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0) : color{r, g, b, a}
+ColorRGB::ColorRGB(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0) : Color({r, g, b, a}) {}
+ColorRGB::ColorRGB() : Color() {}
+
+RGB_color const &ColorRGB::setColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0)
 {
+  color = {r, g, b, a};
+  return color;
 }
-ColorRGB::ColorRGB()
+RGB_color const &ColorRGB::setColor(RGB_color c)
 {
+  color = c;
+  return color;
 }
-*/
+
+/* Color BW */
+
+ColorBW::ColorBW(unsigned char l) : Color(l) {}
+ColorBW::ColorBW() : Color() {}
+
+unsigned char ColorBW::getLevel()
+{
+  return color.r;
+}
+
+RGB_color const &ColorBW::setColor(unsigned char l)
+{
+  color = {l, l, l, 0};
+  return color;
+}
