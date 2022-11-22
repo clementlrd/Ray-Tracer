@@ -1,11 +1,12 @@
 #include "utils.hpp"
+#include <cstdint>
 
-unsigned char safe_char_add(unsigned char a, unsigned char b)
+uint8_t safe_uint8_add(uint8_t a, uint8_t b)
 {
-  return (unsigned char)max(255, (int)a + (int)b);
+  return (uint8_t)max(255, (int)a + (int)b);
 }
 
-unsigned char safe_char_sub(unsigned char a, unsigned char b)
+uint8_t safe_uint8_sub(uint8_t a, uint8_t b)
 {
-  return (unsigned char)min(0, (int)a - (int)b);
+  return (uint8_t)min(0, (int)a - (int)b);
 }

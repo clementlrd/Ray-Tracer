@@ -6,24 +6,24 @@
 Color::Color(RGB_color const &c) : color(c)
 {
 }
-Color::Color(unsigned char level) : color{level, level, level, 0} {}
+Color::Color(uint8_t level) : color{level, level, level, 0} {}
 Color::Color() : color{0, 0, 0, 0} {}
 
 Color &Color::operator+=(Color c)
 {
-  color.r = safe_char_add(color.r, c.color.r);
-  color.g = safe_char_add(color.g, c.color.g);
-  color.b = safe_char_add(color.b, c.color.b);
-  color.a = safe_char_add(color.a, c.color.a);
+  color.r = safe_uint8_add(color.r, c.color.r);
+  color.g = safe_uint8_add(color.g, c.color.g);
+  color.b = safe_uint8_add(color.b, c.color.b);
+  color.a = safe_uint8_add(color.a, c.color.a);
   return *this;
 }
 
 Color &Color::operator-=(Color c)
 {
-  color.r = safe_char_sub(color.r, c.color.r);
-  color.g = safe_char_sub(color.g, c.color.g);
-  color.b = safe_char_sub(color.b, c.color.b);
-  color.a = safe_char_sub(color.a, c.color.a);
+  color.r = safe_uint8_sub(color.r, c.color.r);
+  color.g = safe_uint8_sub(color.g, c.color.g);
+  color.b = safe_uint8_sub(color.b, c.color.b);
+  color.a = safe_uint8_sub(color.a, c.color.a);
   return *this;
 }
 
@@ -34,10 +34,10 @@ RGB_color const &Color::getRGBColor() const
 
 /* Color RGB */
 
-ColorRGB::ColorRGB(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0) : Color({r, g, b, a}) {}
+ColorRGB::ColorRGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : Color({r, g, b, a}) {}
 ColorRGB::ColorRGB() : Color() {}
 
-RGB_color const &ColorRGB::setColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0)
+RGB_color const &ColorRGB::setColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
   color = {r, g, b, a};
   return color;
@@ -50,15 +50,15 @@ RGB_color const &ColorRGB::setColor(RGB_color c)
 
 /* Color BW */
 
-ColorBW::ColorBW(unsigned char l) : Color(l) {}
+ColorBW::ColorBW(uint8_t l) : Color(l) {}
 ColorBW::ColorBW() : Color() {}
 
-unsigned char ColorBW::getLevel()
+uint8_t ColorBW::getLevel()
 {
   return color.r;
 }
 
-RGB_color const &ColorBW::setColor(unsigned char l)
+RGB_color const &ColorBW::setColor(uint8_t l)
 {
   color = {l, l, l, 0};
   return color;

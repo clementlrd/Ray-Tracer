@@ -4,6 +4,11 @@
 #include <vector>
 #include "color.hpp"
 
+/* screenSize
+ *
+ * Contain a screen size with a width and height.
+ *
+ */
 struct screenSize
 {
   size_t width;
@@ -11,17 +16,22 @@ struct screenSize
 };
 typedef struct screenSize screenSize;
 
+/* Pixel
+ *
+ * Pixel class, contain a color
+ *
+ */
 class Pixel
 {
 protected:
-  ColorRGB color;
+  Color color;
 
 public:
-  Pixel(ColorRGB c);
+  Pixel(Color c);
   Pixel();
 
-  ColorRGB const &getColor() const;
-  ColorRGB const &setColor(ColorRGB const &c);
+  Color const &getColor() const;
+  Color const &setColor(Color const &c);
 };
 
 class Ecran

@@ -1,6 +1,8 @@
 #ifndef __COLOR_HPP__
 #define __COLOR_HPP__
 
+#include <cstdint>
+
 /* RGB_color
  *
  * Struct that contain a color representation (r,g,b,a)
@@ -8,10 +10,10 @@
  */
 struct RGB_color
 {
-  unsigned char r;
-  unsigned char g;
-  unsigned char b;
-  unsigned char a;
+  uint8_t r;
+  uint8_t g;
+  uint8_t b;
+  uint8_t a;
 };
 
 /* Color
@@ -26,7 +28,7 @@ protected:
 
 public:
   Color(RGB_color const &c);
-  Color(unsigned char level);
+  Color(uint8_t level);
   Color();
 
   Color &operator+=(Color const c);
@@ -43,10 +45,10 @@ public:
 class ColorRGB : public Color
 {
 public:
-  ColorRGB(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0);
+  ColorRGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
   ColorRGB();
 
-  RGB_color const &setColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0);
+  RGB_color const &setColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
   RGB_color const &setColor(RGB_color c);
 };
 
@@ -58,14 +60,14 @@ public:
 class ColorBW : public Color
 {
 protected:
-  unsigned char level;
+  uint8_t level;
 
 public:
-  ColorBW(unsigned char l);
+  ColorBW(uint8_t l);
   ColorBW();
 
-  unsigned char getLevel();
-  RGB_color const &setColor(unsigned char l);
+  uint8_t getLevel();
+  RGB_color const &setColor(uint8_t l);
 };
 
 #endif

@@ -3,13 +3,13 @@ CC := g++-10
 FLAGS := -W -Wall -Wextra -std=c++20
 SRCS := $(wildcard src/*.cpp)
 OBJS := $(SRCS:src/%.cpp=bin/%.o)
-MAIN := src/main.cpp 
+MAIN := src/main.cpp
 EXE := bin/main.exe
 
 all : init compile launch
 
 compile : $(OBJS)
-	@$(CC) $^ -o $(EXE)
+	@$(CC) $^ -o $(EXE) $(FLAGS)
 
 launch : $(EXE)
 	@./$<

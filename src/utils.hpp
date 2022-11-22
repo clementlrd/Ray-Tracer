@@ -1,6 +1,8 @@
 #ifndef __UTILS_HPP__
 #define __UTILS_HPP__
 
+#include <cstdint>
+
 template <typename T>
 T max(const T &a, const T &b)
 {
@@ -13,7 +15,7 @@ T min(const T &a, const T &b)
   return a < b ? a : b;
 }
 
-unsigned char safe_char_add(unsigned char a, unsigned char b);
-unsigned char safe_char_sub(unsigned char a, unsigned char b);
+uint8_t safe_uint8_add(uint8_t a, uint8_t b);
+uint8_t safe_uint8_sub(uint8_t a, uint8_t b);
 
 #endif
