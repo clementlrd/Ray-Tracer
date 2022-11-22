@@ -1,4 +1,4 @@
-.PHONY : all compile launch clean init
+.PHONY : all build start clean init
 CC := g++-10
 FLAGS := -W -Wall -Wextra -std=c++20
 SRCS := $(wildcard src/*.cpp)
@@ -6,12 +6,12 @@ OBJS := $(SRCS:src/%.cpp=bin/%.o)
 MAIN := src/main.cpp
 EXE := bin/main.exe
 
-all : init compile launch
+all : init build start
 
-compile : $(OBJS)
+build : $(OBJS)
 	@$(CC) $^ -o $(EXE) $(FLAGS)
 
-launch : $(EXE)
+start : $(EXE)
 	@./$<
 
 $(MAIN) : src/
