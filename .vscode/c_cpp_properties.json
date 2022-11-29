@@ -1,19 +1,14 @@
 {
-  "env": {
-    "defaultIncludePath": [
-      "${workspaceFolder}"
-    ]
-  },
-  "configurations": [
-    {
-      "name": "Linux",
-      "intelliSenseMode": "clang-x64",
-      "includePath": [
-        "${defaultIncludePath}/**"
-      ],
-      "cStandard": "c11",
-      "cppStandard": "c++20"
-    }
-  ],
-  "version": 1
+    "configurations": [
+        {
+            "name": "Linux",
+            "intelliSenseMode": "clang-x64",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
 }
