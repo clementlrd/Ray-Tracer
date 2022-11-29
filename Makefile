@@ -1,30 +1,26 @@
-.PHONY : all build start clean init
 CC := g++-10
 FLAGS := -W -Wall -Wextra -std=c++20
-SRCS := $(wildcard src/*.cpp)
+SRC := src
+SRCS := $(wildcard $(SRC)/*.cpp) $(wildcard $(SRC)/**/*.cpp)
 OBJS := $(SRCS:src/%.cpp=bin/%.o)
 MAIN := src/main.cpp
 EXE := bin/main.exe
 
-all : init build start
+.PHONY : all build start clean
+
+all : build start
 
 build : $(OBJS)
-	@$(CC) $^ -o $(EXE) $(FLAGS)
+	$(CC) $^ -o $(EXE) $(FLAGS)
 
 start : $(EXE)
-	@./$<
-
-$(MAIN) : src/
-	@touch $(@)
-	@echo "#include <iostream>\n\nint main()\n{\n\treturn 0;\n}" > $(@)
-
-%/ :
-	@mkdir $@
-
-bin/%.o : src/%.cpp
-	@$(CC) -c $< -o $@ $(FLAGS)
-
-init: bin/ $(MAIN)
+	./$<
 
 clean :
-	@rm $(wildcard bin/*)
+	-rm -f $(wildcard bin/**/*.o) $(wildcard bin/*.o) $(EXE)
+
+dir_guard = @mkdir -p $(@D)
+
+bin/%.o : src/%.cpp
+	$(dir_guard)
+	$(CC) -c $< -o $@ $(FLAGS)

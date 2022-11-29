@@ -1,16 +1,15 @@
 #ifndef __ECRAN_HPP__
 #define __ECRAN_HPP__
 
+#include "../materials/color.hpp"
 #include <vector>
-#include "color.hpp"
 
 /* screenSize
  *
  * Contain a screen size with a width and height.
  *
  */
-struct screenSize
-{
+struct screenSize {
   size_t width;
   size_t height;
 };
@@ -21,8 +20,7 @@ typedef struct screenSize screenSize;
  * Pixel class, contain a color
  *
  */
-class Pixel
-{
+class Pixel {
 protected:
   Color color;
 
@@ -34,8 +32,7 @@ public:
   Color const &setColor(Color const &c);
 };
 
-class Ecran
-{
+class Ecran {
 protected:
   screenSize size;
   size_t resolution;
