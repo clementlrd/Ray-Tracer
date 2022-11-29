@@ -1,2 +1,4 @@
-.vscode
+.vscode/*
+!.vscode/c_cpp_properties.json
 bin
+*.ppm

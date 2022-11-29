@@ -6,23 +6,27 @@ Ressource : [RayTracingInOneWeek](https://raytracing.github.io/books/RayTracingI
 
 ## Commands
 
-Compiler et lancer le projet :
+Compile and launch project :
 ```bash
 make
 ``` 
 
-Uniquement compiler le projet :
+Compile project only :
 
 ```bash
 make build
 ``` 
 
-Uniquement lancer le projet sans le recompiler :
+Launch project only :
 ```bash
 make start
 ``` 
 
-Nettoyer le projet (effacer les fichiers binaires) :
+Clean project (remove binary files) :
 ```bash
 make clean
 ``` 
+
+## Development
+
+We use the *clang-format* formatter
