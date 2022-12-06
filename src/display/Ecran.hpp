@@ -35,10 +35,9 @@ public:
 class Ecran {
 protected:
   screenSize size;
-  size_t resolution;
+  std::vector<std::vector<Pixel>> pixels;
 
 public:
-  Ecran(size_t width, size_t height, size_t resolution);
   Ecran(size_t width, size_t height);
   Ecran();
   ~Ecran(); // TODO : delete pixels
@@ -47,11 +46,11 @@ public:
   void getSize(size_t &w, size_t &h) const;
   size_t getWidth() const;
   size_t getHeight() const;
-  Pixel &getPixel(size_t posX, size_t posY) const;
+  Pixel &getPixel(size_t posW, size_t posH);
 
   screenSize const &changeSize(screenSize const &size);
   screenSize const &changeSize(size_t width, size_t height);
-  void setResolution(size_t resolution);
+  size_t getResolution() const;
 };
 
 #endif
