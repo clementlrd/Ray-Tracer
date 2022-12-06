@@ -19,6 +19,9 @@ build : $(OBJS)
 
 start : start-ppm
 
+start-console : $(EXE)
+	./$< $(ARGS)
+
 start-ppm : $(EXE)
 	./$< $(ARGS) > $(IMAGE_PATH).ppm
 
