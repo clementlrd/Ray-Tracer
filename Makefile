@@ -6,9 +6,9 @@ OBJS := $(SRCS:src/%.cpp=bin/%.o)
 MAIN := src/main.cpp
 EXE := bin/main.exe
 
-IMAGE_FORMAT := ppm
-IMAGE_PATH := ./
-DEFAULT_ARGS := $(IMAGE_FORMAT)
+IMAGE_PATH := render/test
+DEFAULT_ARGS := 
+ARGS := $(DEFAULT_ARGS)
 
 .PHONY : all build start clean
 
@@ -17,14 +17,14 @@ all : build start
 build : $(OBJS)
 	$(CC) $^ -o $(EXE) $(FLAGS)
 
-start-simple : $(EXE)
-	./$< $(ARGS)
+start : start-ppm
 
-start : $(EXE)
-	./$< $(ARGS) > $(IMAGE_PATH).$(IMAGE_FORMAT)
+start-ppm : $(EXE)
+	./$< $(ARGS) > $(IMAGE_PATH).ppm
 
 clean :
 	-rm -f $(wildcard bin/**/*.o) $(wildcard bin/*.o) $(EXE)
+	-rm -f render/* $(dir $(IMAGE_PATH))*
 
 dir_guard = @mkdir -p $(@D)
 
