@@ -27,7 +27,16 @@ public:
   Image();
   Image(size_t width, size_t height);
   Image(size_t width, size_t height, Color baseColor);
-  screenSize getSize() const;
+
+  screenSize const &getSize() const;
+  void getSize(size_t &w, size_t &h) const;
+  size_t getWidth() const;
+  size_t getHeight() const;
+  Color &getColor(size_t posW, size_t posH);
+
+  screenSize const &changeSize(screenSize const &final_size);
+  screenSize const &changeSize(size_t width, size_t height);
+  size_t getResolution() const;
   //~Image();
 };
 
