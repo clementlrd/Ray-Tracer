@@ -1,5 +1,4 @@
-#ifndef __ECRAN_HPP__
-#define __ECRAN_HPP__
+#pragma once
 
 #include "../materials/color.hpp"
 #include <vector>
@@ -52,5 +51,3 @@ public:
   screenSize const &changeSize(size_t width, size_t height);
   size_t getResolution() const;
 };
-
-#endif

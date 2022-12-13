@@ -1,5 +1,4 @@
-#ifndef __IMAGE_HPP__
-#define __IMAGE_HPP__
+#pragma once
 
 #include "../materials/color.hpp"
 #include <vector>
@@ -39,5 +38,3 @@ public:
   size_t getResolution() const;
   //~Image();
 };
-
-#endif

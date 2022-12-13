@@ -1,5 +1,4 @@
-#ifndef __COLOR_HPP__
-#define __COLOR_HPP__
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -70,5 +69,3 @@ public:
   uint8_t getLevel();
   RGB_color const &setColor(uint8_t l);
 };
-
-#endif
