@@ -18,30 +18,22 @@ Image::Image(size_t width, size_t height, Color baseColor)
   image.resize(width, columns);
 }
 
-screenSize const &Image::getSize() const{
-    return size;
-}
+screenSize const &Image::getSize() const { return size; }
 
-void Image::getSize(size_t &w, size_t &h) const{
-  w= size.width;
+void Image::getSize(size_t &w, size_t &h) const {
+  w = size.width;
   h = size.height;
 }
 
-size_t Image::getWidth() const{
-  return size.width;
-}
+size_t Image::getWidth() const { return size.width; }
 
-size_t Image::getHeight() const{
-  return size.height;
-}
+size_t Image::getHeight() const { return size.height; }
 
-Color &Image::getColor(size_t posW, size_t posH){
-  return image[posW][posH];
-}
+Color &Image::getColor(size_t posW, size_t posH) { return image[posW][posH]; }
 
-screenSize const &Image::changeSize(screenSize const &final_size){
-  for (size_t i =0;i< final_size.width;i++){
-    image[i].resize(final_size.height,Color());
+screenSize const &Image::changeSize(screenSize const &final_size) {
+  for (size_t i = 0; i < final_size.width; i++) {
+    image[i].resize(final_size.height, Color());
   };
   Color baseColor = Color();
   std::vector<Color> columns(final_size.height, baseColor);
@@ -51,9 +43,9 @@ screenSize const &Image::changeSize(screenSize const &final_size){
   return size;
 }
 
-screenSize const &Image::changeSize(size_t width, size_t height){
-  for (size_t i =0;i< width;i++){
-    image[i].resize(height,Color());
+screenSize const &Image::changeSize(size_t width, size_t height) {
+  for (size_t i = 0; i < width; i++) {
+    image[i].resize(height, Color());
   };
   Color baseColor = Color();
   std::vector<Color> columns(height, baseColor);
@@ -63,7 +55,4 @@ screenSize const &Image::changeSize(size_t width, size_t height){
   return size;
 }
 
-size_t Image::getResolution() const{
-  return size.width*size.height;
-}
-
+size_t Image::getResolution() const { return size.width * size.height; }
