@@ -8,15 +8,11 @@ void printerPpm(Image image) {
   std::cout << "P3\n"
             << currentSize.width << ' ' << currentSize.height << "\n255\n";
 
-  for (size_t j = currentSize.height - 1; j >= 0; --j) {
-    for (size_t i = 0; i < currentSize.width; ++i) {
-      Color current_color = image.getColor(i, j);
-      RGB_color rgb_value = current_color.getRGBColor();
-      uint8_t r = rgb_value.r;
-      uint8_t g = rgb_value.g;
-      uint8_t b = rgb_value.b;
-
-      std::cout << r << ' ' << g << ' ' << b << '\n';
+  for (size_t j = 0; j < currentSize.height; j++) {
+    for (size_t i = 0; i < currentSize.width; i++) {
+      Color current_color = image(i, j);
+      const RGB_color rgb = current_color.getRGBColor();
+      std::cout << (int)rgb.r << ' ' << (int)rgb.g << ' ' << (int)rgb.b << '\n';
     }
   }
 }
