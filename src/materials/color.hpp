@@ -37,6 +37,7 @@ public:
   RGB_color const &getRGBColor() const;
 
   std::string repr() const;
+  friend std::ostream &operator<<(std::ostream &os, const Color &c);
 };
 
 /* ColorRGB

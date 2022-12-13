@@ -39,6 +39,11 @@ std::string Color::repr() const {
          std::to_string(b) + " | " + std::to_string(a) + ")";
 }
 
+std::ostream &operator<<(std::ostream &os, const Color &c) {
+  os << c.repr();
+  return os;
+}
+
 /* Color RGB */
 
 ColorRGB::ColorRGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
