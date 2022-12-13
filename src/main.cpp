@@ -5,7 +5,7 @@ void print_color(RGB_color const &c);
 
 int main() {
   Color c1;
-  print_color(c1.getRGBColor());
+  std::cout << c1.repr() << std::endl;
   return 0;
 }
 

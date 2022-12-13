@@ -1,5 +1,6 @@
 #include "color.hpp"
 #include "../utils.hpp"
+#include <cstdint>
 
 /* Color */
 
@@ -7,7 +8,7 @@ Color::Color(RGB_color const &c) : color(c) {}
 Color::Color(uint8_t level) : color{level, level, level, 0} {}
 Color::Color() : color{0, 0, 0, 0} {}
 
-Color &Color::operator+=(Color c) {
+Color &Color::operator+=(Color const &c) {
   color.r = safe_uint8_add(color.r, c.color.r);
   color.g = safe_uint8_add(color.g, c.color.g);
   color.b = safe_uint8_add(color.b, c.color.b);
@@ -15,7 +16,7 @@ Color &Color::operator+=(Color c) {
   return *this;
 }
 
-Color &Color::operator-=(Color c) {
+Color &Color::operator-=(Color const &c) {
   color.r = safe_uint8_sub(color.r, c.color.r);
   color.g = safe_uint8_sub(color.g, c.color.g);
   color.b = safe_uint8_sub(color.b, c.color.b);
@@ -23,7 +24,20 @@ Color &Color::operator-=(Color c) {
   return *this;
 }
 
+bool Color::operator==(Color const &c) const {
+  return color.r == c.color.r && color.g == c.color.g && color.b == c.color.b &&
+         color.a == c.color.a;
+}
+
+bool Color::operator!=(Color const &c) const { return !(*this == c); }
+
 RGB_color const &Color::getRGBColor() const { return color; }
+
+std::string Color::repr() const {
+  const auto [r, g, b, a] = color;
+  return "(" + std::to_string(r) + "," + std::to_string(g) + "," +
+         std::to_string(b) + " | " + std::to_string(a) + ")";
+}
 
 /* Color RGB */
 

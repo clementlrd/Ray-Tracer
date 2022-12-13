@@ -2,14 +2,14 @@
 #define __COLOR_HPP__
 
 #include <cstdint>
+#include <string>
 
 /* RGB_color
  *
  * Struct that contain a color representation (r,g,b,a)
  *
  */
-struct RGB_color
-{
+struct RGB_color {
   uint8_t r;
   uint8_t g;
   uint8_t b;
@@ -21,8 +21,7 @@ struct RGB_color
  * Color class, contain color representation (RGB base) and methods on color
  *
  */
-class Color
-{
+class Color {
 protected:
   RGB_color color;
 
@@ -31,10 +30,14 @@ public:
   Color(uint8_t level);
   Color();
 
-  Color &operator+=(Color const c);
-  Color &operator-=(Color const c);
+  Color &operator+=(Color const &c);
+  Color &operator-=(Color const &c);
+  bool operator==(Color const &c) const;
+  bool operator!=(Color const &c) const;
 
   RGB_color const &getRGBColor() const;
+
+  std::string repr() const;
 };
 
 /* ColorRGB
@@ -42,8 +45,7 @@ public:
  * ColorRGB class, contain RGB color representation
  *
  */
-class ColorRGB : public Color
-{
+class ColorRGB : public Color {
 public:
   ColorRGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
   ColorRGB();
@@ -57,8 +59,7 @@ public:
  * ColorBW class, contain BW color representation
  *
  */
-class ColorBW : public Color
-{
+class ColorBW : public Color {
 protected:
   uint8_t level;
 
