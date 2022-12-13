@@ -17,6 +17,9 @@ all : build start
 build : $(OBJS)
 	$(CC) $^ -o $(EXE) $(FLAGS)
 
+debug : $(OBJS)
+	$(CC) $^ -o $(EXE) $(FLAGS) -g 
+
 start : start-ppm
 
 start-console : $(EXE)
