@@ -59,3 +59,7 @@ inline Vect3D cross(const Vect3D &u, const Vect3D &v) {
 }
 
 inline Vect3D unit(const Vect3D &u) { return u / u.norm(); }
+
+/* Point 3D class */
+
+using Point3D = Vect3D;
