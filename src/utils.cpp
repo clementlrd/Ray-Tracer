@@ -1,4 +1,5 @@
 #include "utils.hpp"
+
 #include <cstdint>
 
 uint8_t safe_uint8_add(uint8_t a, uint8_t b) {

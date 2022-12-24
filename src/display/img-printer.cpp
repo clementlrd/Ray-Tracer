@@ -1,9 +1,8 @@
-#include "printer.hpp"
-#include "../display/Image.hpp"
-#include "../materials/color.hpp"
+#include "image.hpp"
+
 #include <iostream>
 
-void printerPpm(Image image) {
+void printer::ppm(Image image) {
   screenSize currentSize = image.getSize();
   std::cout << "P3\n"
             << currentSize.width << ' ' << currentSize.height << "\n255\n";

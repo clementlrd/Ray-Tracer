@@ -2,41 +2,21 @@
 
 A basic ray tracer as a project for ENSTA Course IN204
 
-Ressource : [RayTracingInOneWeek](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+## Create project
 
-## Commands
-
-Compile and launch project, it renders the project in a ppm file :
+Create the project with CMake for the first time :
 ```bash
-make
-``` 
-
-Compile project only :
-
-```bash
-make build
-``` 
-
-Renders the project only (in a ppm file) :
-```bash
-make start
-``` 
-
-Clean project (remove binary files) :
-```bash
-make clean
-``` 
-
-### Miscellaneous
-
-print in console :
-```
-make start-console
+mkdir build
+cd build
+cmake ..
 ```
 
-Renders in ppm :
-```
-make start-ppm
+Then you can configure your editor (with `>CMake: Configure` for vscode with the CMake tools extension).
+
+For lauching the project, you can type the `make` command in the `build/` forlder. 
+The result is printed in the console, but you can put it in a picture :
+```bash
+make > ../render/image.ppm
 ```
 
 ## Project description
@@ -50,5 +30,3 @@ The project export the image in a file (we use the ppm format for simplicity at 
 ## Development
 
 We use the *clang-format* formatter.
-
-Use the command `make debug` for gdb.

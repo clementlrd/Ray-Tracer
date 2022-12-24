@@ -25,19 +25,19 @@ protected:
   RGB_color color;
 
 public:
-  Color(RGB_color const &c);
+  Color(RGB_color const& c);
   Color(uint8_t level);
   Color();
 
-  Color &operator+=(Color const &c);
-  Color &operator-=(Color const &c);
-  bool operator==(Color const &c) const;
-  bool operator!=(Color const &c) const;
+  Color& operator+=(Color const& c);
+  Color& operator-=(Color const& c);
+  bool operator==(Color const& c) const;
+  bool operator!=(Color const& c) const;
 
-  RGB_color const &getRGBColor() const;
+  RGB_color const& getRGBColor() const;
 
   std::string repr() const;
-  friend std::ostream &operator<<(std::ostream &os, const Color &c);
+  friend std::ostream& operator<<(std::ostream& os, const Color& c);
 };
 
 /* ColorRGB
@@ -50,8 +50,8 @@ public:
   ColorRGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
   ColorRGB();
 
-  RGB_color const &setColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
-  RGB_color const &setColor(RGB_color c);
+  RGB_color const& setColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
+  RGB_color const& setColor(RGB_color c);
 };
 
 /* ColorBW
@@ -68,5 +68,5 @@ public:
   ColorBW();
 
   uint8_t getLevel();
-  RGB_color const &setColor(uint8_t l);
+  RGB_color const& setColor(uint8_t l);
 };
