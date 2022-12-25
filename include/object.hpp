@@ -52,6 +52,7 @@ namespace obj {
     Vect3D vectx;
     Vect3D vecty;
     Vect3D vectz;
+    double side;
 
   public:
     Cube();
