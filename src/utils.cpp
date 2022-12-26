@@ -9,3 +9,7 @@ uint8_t safe_uint8_add(uint8_t a, uint8_t b) {
 uint8_t safe_uint8_sub(uint8_t a, uint8_t b) {
   return (uint8_t)max(0, (int)a - (int)b);
 }
+
+uint8_t safe_uint8_mult(uint8_t a, double b) {
+  return (uint8_t)max(min((double)255, (double)a * b), (double)0);
+}
