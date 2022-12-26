@@ -21,9 +21,8 @@ namespace obj {
    */
   class Hittable {
   public:
-    /* return intersection point  */
-    virtual bool intersect(Ray, hit_record&)  = 0;
-    virtual bool intersect(Ray&, hit_record&) = 0;
+    /* If the ray hit the object, record data  */
+    virtual bool intersect(Ray&, hit_record&) const = 0;
   };
   /*
    * Object abstract class
@@ -33,8 +32,10 @@ namespace obj {
     Point3D origin;
 
   public:
-    virtual Vect3D normal(Point3D surface_pt) const  = 0;
-    virtual Vect3D tangent(Point3D surface_pt) const = 0;
+    virtual Vect3D normal(Point3D surface_pt)
+        const = 0; // weird for camera for example... usefull ?
+    virtual Vect3D tangent(Point3D surface_pt)
+        const = 0; // weird for camera for example... usefull ?
   };
 
   /* TODO :
@@ -46,7 +47,7 @@ namespace obj {
    *
    * TODO : rename class
    */
-  class Cube : public Object {
+  class Cube : public Object, public Hittable {
   private:
     // 3 base vectors
     Vect3D vectx;
@@ -60,14 +61,15 @@ namespace obj {
     Cube(double origin, Vect3D vectx, Vect3D vecty, Vect3D vectz);
     Cube(const Cube& cube);
 
-    Vect3D normal(Point3D surface_pt) const;
-    Vect3D tangent(Point3D surface_pt) const;
+    Vect3D normal(Point3D surface_pt) const override;
+    Vect3D tangent(Point3D surface_pt) const override;
+    bool intersect(Ray&, hit_record&) const override;
   };
 
   /*
    * Sphere object
    */
-  class Sphere : public Object {
+  class Sphere : public Object, public Hittable {
   private:
     double radius;
 
@@ -76,14 +78,15 @@ namespace obj {
     Sphere(Point3D origin, double radius);
     Sphere(const Sphere& sphere);
 
-    Vect3D normal(Point3D surface_pt) const;
-    Vect3D tangent(Point3D surface_pt) const;
+    Vect3D normal(Point3D surface_pt) const override;
+    Vect3D tangent(Point3D surface_pt) const override;
+    bool intersect(Ray&, hit_record&) const override;
   };
 
   /*
    * plane object
    */
-  class Plane : public Object {
+  class Plane : public Object, public Hittable {
   private:
     Vect3D vectx; // width
     Vect3D vecty; // height
@@ -95,8 +98,10 @@ namespace obj {
 
     double getWidth() const;
     double getHeight() const;
-    Vect3D normal(Point3D surface_pt) const;
-    Vect3D tangent(Point3D surface_pt) const;
+
+    Vect3D normal(Point3D surface_pt) const override;
+    Vect3D tangent(Point3D surface_pt) const override;
+    bool intersect(Ray&, hit_record&) const override;
   };
 
   /*
