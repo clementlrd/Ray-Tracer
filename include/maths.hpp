@@ -57,6 +57,9 @@ namespace maths {
     return Vect3D(u.x() * t, u.y() * t, u.z() * t);
   }
 
+  // Commutativity of multiplication
+  inline Vect3D operator*(double t, const Vect3D& u) { return u * t; }
+
   inline Vect3D operator/(const Vect3D& u, double t) { return u * (1 / t); }
 
   inline double dot(const Vect3D& u, const Vect3D& v) {
