@@ -21,9 +21,9 @@ public:
       const Color& color = ColorBW { 0 });
   Ray(const Ray&);
 
-  maths::Point3D get_origin() const;
-  maths::Vect3D get_direction() const;
-  Color get_color() const;
+  maths::Point3D get_origin() const { return origin; };
+  maths::Vect3D get_direction() const { return direction; };
+  Color get_color() const { return color; };
 
   maths::Point3D current_pos(double time) const;
 
@@ -31,7 +31,7 @@ public:
   Ray& operator-=(const Color c);
 };
 
-/* Send ray into the scene -> TODO : mouve into render part */
+/* Send ray into the scene -> TODO : move into render part */
 Color send_ray(maths::Point3D origin,
                maths::Vect3D dir,
                double dmax = std::numeric_limits<int>::max(),
