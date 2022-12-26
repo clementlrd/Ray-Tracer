@@ -1,7 +1,5 @@
 #include "color.hpp"
 
-#include "utils.hpp"
-
 #include <cstdint>
 
 /* Color */
@@ -9,6 +7,14 @@
 Color::Color(RGB_color const& c) : color(c) {}
 Color::Color(uint8_t level) : color { level, level, level, 0 } {}
 Color::Color() : color { 0, 0, 0, 0 } {}
+
+Color& Color::operator*=(double const& t) {
+  color.r = safe_uint8_mult(color.r, t);
+  color.g = safe_uint8_mult(color.g, t);
+  color.b = safe_uint8_mult(color.b, t);
+  color.a = safe_uint8_mult(color.a, t);
+  return *this;
+}
 
 Color& Color::operator+=(Color const& c) {
   color.r = safe_uint8_add(color.r, c.color.r);
@@ -25,6 +31,11 @@ Color& Color::operator-=(Color const& c) {
   color.a = safe_uint8_sub(color.a, c.color.a);
   return *this;
 }
+
+Color& Color::operator=(Color const& c) {
+  color = c.color;
+  return *this;
+};
 
 bool Color::operator==(Color const& c) const {
   return color.r == c.color.r && color.g == c.color.g && color.b == c.color.b
