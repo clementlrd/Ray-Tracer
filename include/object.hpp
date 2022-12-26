@@ -1,4 +1,5 @@
 #pragma once
+#include "image.hpp"
 #include "maths.hpp"
 #include "ray.hpp"
 
@@ -33,9 +34,9 @@ namespace obj {
 
   public:
     virtual Vect3D normal(Point3D surface_pt)
-        const = 0; // weird for camera for example... usefull ?
+        const = 0; // weird for camera for example... useful ?
     virtual Vect3D tangent(Point3D surface_pt)
-        const = 0; // weird for camera for example... usefull ?
+        const = 0; // weird for camera for example... useful ?
   };
 
   /* TODO :
@@ -58,7 +59,7 @@ namespace obj {
   public:
     Cube();
     Cube(double side);
-    Cube(double origin, Vect3D vectx, Vect3D vecty, Vect3D vectz);
+    Cube(Point3D origin, double side, Vect3D vectx, Vect3D vecty, Vect3D vectz);
     Cube(const Cube& cube);
 
     Vect3D normal(Point3D surface_pt) const override;
@@ -104,11 +105,30 @@ namespace obj {
     bool intersect(Ray&, hit_record&) const override;
   };
 
-  /*
-   * TODO : Camera class
-   * implement a camera to create image for render
-   */
-  class Camera {};
+  class Camera {
+  private:
+    screenSize size;
+    size_t focal_length;
+    Point3D origin;
+
+  public:
+    Camera();
+    Camera(size_t height,
+           size_t width,
+           size_t focal_length,
+           Point3D origin = Point3D(0, 0, 0));
+    Camera(screenSize size,
+           size_t focal_length,
+           Point3D origin = Point3D(0, 0, 0));
+    Camera(const Camera& cam);
+
+    Vect3D get_horizontal() const { return Vect3D(size.width, 0, 0); };
+    Vect3D get_vertical() const { return Vect3D(0, size.height, 0); };
+    Point3D get_origin() const { return origin; };
+    size_t get_focal_length() const { return focal_length; };
+    screenSize get_size() const { return size; };
+    Point3D get_llc() const; /* llc : lower left corner */
+  };
 
   /*
    * TODO : Scene
