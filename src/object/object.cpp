@@ -1,6 +1,6 @@
 #include "object.hpp"
 
-using obj::Cube;
+using obj::Cuboid;
 using obj::Plane;
 using obj::Sphere;
 

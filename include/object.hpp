@@ -44,23 +44,21 @@ namespace obj {
    * Add texture to each object
    */
   /*
-   * Cube object
+   * Cuboid object
    *
    * TODO : rename class
    */
-  class Cube : public Object, public Hittable {
+  class Cuboid : public Object, public Hittable {
   private:
     // 3 base vectors
     Vect3D vectx;
     Vect3D vecty;
     Vect3D vectz;
-    double side;
 
   public:
-    Cube();
-    Cube(double side);
-    Cube(Point3D origin, double side, Vect3D vectx, Vect3D vecty, Vect3D vectz);
-    Cube(const Cube& cube);
+    Cuboid();
+    Cuboid(Point3D origin, Vect3D vectx, Vect3D vecty, Vect3D vectz);
+    Cuboid(const Cuboid& cuboid);
 
     Vect3D normal(Point3D surface_pt) const override;
     Vect3D tangent(Point3D surface_pt) const override;
@@ -85,7 +83,7 @@ namespace obj {
   };
 
   /*
-   * plane object
+   * Plane object
    */
   class Plane : public Object, public Hittable {
   private:
