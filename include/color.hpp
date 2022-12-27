@@ -75,7 +75,8 @@ public:
   RGB_color const& setColor(uint8_t l);
 };
 
-inline Color operator*(Color color, double const t) {
+// By convention double is before Color
+inline Color operator*(double const t, Color const color) {
   RGB_color c = color.getRGBColor();
   uint8_t r   = safe_uint8_mult(c.r, t);
   uint8_t g   = safe_uint8_mult(c.g, t);
@@ -84,8 +85,6 @@ inline Color operator*(Color color, double const t) {
   return Color({ r, g, b, a });
 };
 
-inline Color operator*(double t, Color c) { return c * t; };
-
 inline Color operator+(Color const color1, Color const color2) {
   RGB_color c1 = color1.getRGBColor();
   RGB_color c2 = color2.getRGBColor();
@@ -93,5 +92,15 @@ inline Color operator+(Color const color1, Color const color2) {
   uint8_t g    = safe_uint8_add(c1.g, c2.g);
   uint8_t b    = safe_uint8_add(c1.b, c2.b);
   uint8_t a    = safe_uint8_add(c1.a, c2.a);
+  return Color({ r, g, b, a });
+};
+
+inline Color operator-(Color const color1, Color const color2) {
+  RGB_color c1 = color1.getRGBColor();
+  RGB_color c2 = color2.getRGBColor();
+  uint8_t r    = safe_uint8_sub(c1.r, c2.r);
+  uint8_t g    = safe_uint8_sub(c1.g, c2.g);
+  uint8_t b    = safe_uint8_sub(c1.b, c2.b);
+  uint8_t a    = safe_uint8_sub(c1.a, c2.a);
   return Color({ r, g, b, a });
 };

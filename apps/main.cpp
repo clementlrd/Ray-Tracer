@@ -44,6 +44,6 @@ void print_image(Image const& image) {
 Color ray_color(const Ray& r) {
   Vect3D unit_direction = unit(r.dir());
   double t              = 0.5 * (unit_direction.y() + 1.0);
-  return Color({ 255, 255, 255 }) * (1 - t)
-         + Color({ 128, 179, 255 }) * t; // from white to cyan
+  return (1 - t) * Color({ 255, 255, 255 })
+         + t * Color({ 128, 179, 255 }); // from white to cyan
 }
