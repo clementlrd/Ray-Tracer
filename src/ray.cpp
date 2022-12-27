@@ -15,6 +15,12 @@ Ray::Ray(const maths::Point3D& origin,
 Ray::Ray(const Ray& r)
     : origin(r.origin), direction(r.direction), color(r.color) {};
 
+maths::Point3D Ray::o() const { return origin; };
+
+maths::Vect3D Ray::dir() const { return direction; };
+
+Color Ray::colour() const { return color; };
+
 maths::Point3D Ray::current_pos(double time) const {
   return origin + time * direction;
 };

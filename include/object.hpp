@@ -107,7 +107,7 @@ namespace obj {
 
   class Camera {
   private:
-    screenSize size;
+    screenSize size_cam;
     size_t focal_length;
     Point3D origin;
 
@@ -122,12 +122,12 @@ namespace obj {
            Point3D origin = Point3D(0, 0, 0));
     Camera(const Camera& cam);
 
-    Vect3D get_horizontal() const { return Vect3D(size.width, 0, 0); };
-    Vect3D get_vertical() const { return Vect3D(0, size.height, 0); };
-    Point3D get_origin() const { return origin; };
-    size_t get_focal_length() const { return focal_length; };
-    screenSize get_size() const { return size; };
-    Point3D get_llc() const; /* llc : lower left corner */
+    Vect3D h() const;     /* Get horizontal */
+    Vect3D v() const;     /* Get vertical */
+    Point3D o() const;    /* Get origin */
+    size_t focal() const; /* Get focal length */
+    screenSize size() const;
+    Point3D llc() const; /* llc : lower left corner */
   };
 
   /*

@@ -24,9 +24,7 @@ int main() {
       double u = double(i) / (width - 1);
       double v = double(j) / (height - 1);
       // Create a ray according to the position of the camera
-      Ray r(cam1.get_origin(),
-            cam1.get_llc() + u * cam1.get_horizontal() + v * cam1.get_vertical()
-                - cam1.get_origin());
+      Ray r(cam1.o(), cam1.llc() + u * cam1.h() + v * cam1.v() - cam1.o());
       Color color_pixel = ray_color(r);
       img1(i, j)        = color_pixel;
     };
@@ -44,7 +42,7 @@ void print_image(Image const& image) {
 }
 
 Color ray_color(const Ray& r) {
-  Vect3D unit_direction = unit(r.get_direction());
+  Vect3D unit_direction = unit(r.dir());
   double t              = 0.5 * (unit_direction.y() + 1.0);
   return Color({ 255, 255, 255 }) * (1 - t)
          + Color({ 128, 179, 255 }) * t; // from white to cyan

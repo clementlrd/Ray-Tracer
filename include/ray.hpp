@@ -21,9 +21,9 @@ public:
       const Color& color = ColorBW { 0 });
   Ray(const Ray&);
 
-  maths::Point3D get_origin() const { return origin; };
-  maths::Vect3D get_direction() const { return direction; };
-  Color get_color() const { return color; };
+  maths::Point3D o() const;
+  maths::Vect3D dir() const;
+  Color colour() const;
 
   maths::Point3D current_pos(double time) const;
 
