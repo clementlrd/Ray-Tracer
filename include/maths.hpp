@@ -24,6 +24,7 @@ namespace maths {
     Vect3D(double);
     Vect3D(double x, double y, double z);
     Vect3D(const Vect3D&);
+    Vect3D(Point3D a, Point3D b);
 
     double x() const;
     double y() const;

@@ -7,7 +7,9 @@ using maths::Vect3D;
 Vect3D::Vect3D() : vect { 0, 0, 0 } {}
 Vect3D::Vect3D(double p) : vect { p, p, p } {}
 Vect3D::Vect3D(double x, double y, double z) : vect { x, y, z } {}
-Vect3D::Vect3D(const Vect3D& v) : Vect3D(v.x(), v.y(), v.z()) {}
+Vect3D::Vect3D(const Vect3D& v) : vect { v.x(), v.y(), v.z() } {}
+Vect3D::Vect3D(Point3D a, Point3D b)
+    : vect { (b - a).x(), (b - a).y(), (b - a).z() } {}
 
 double Vect3D::x() const { return vect[0]; }
 double Vect3D::y() const { return vect[1]; }
