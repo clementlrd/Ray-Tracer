@@ -67,6 +67,27 @@ Vect3D Sphere::normal(Point3D surface_pt) const {
   return unit(Vect3D(origin, surface_pt));
 };
 
+Plane::Plane()
+    : Object(Point3D(0, 0, 0)),
+      vectx(Vect3D(1, 0, 0)),
+      vecty(Vect3D(0, 1, 0)) {};
+
+Plane::Plane(Point3D origin, Vect3D vectx, Vect3D vecty)
+    : Object(origin), vectx(vectx), vecty(vecty) {};
+
+Plane::Plane(const Plane& plane)
+    : Object(plane.origin), vectx(plane.vectx), vecty(plane.vecty) {};
+
+double Plane::width() const { return vectx.norm(); };
+
+double Plane::height() const { return vecty.norm(); };
+
+Vect3D Plane::normal(Point3D surface_pt) const {
+  return unit(cross(vectx, vecty)); // direct normal
+};
+
+Vect3D Plane::tangent(Point3D surface_pt) const { return unit(vectx); };
+
 Camera::Camera()
     : size_cam({ 3, 4 }), focal_length(1.0), origin(Point3D(0, 0, 0)) {};
 

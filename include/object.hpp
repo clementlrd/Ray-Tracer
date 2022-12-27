@@ -96,8 +96,8 @@ namespace obj {
     Plane(Point3D origin, Vect3D vectx, Vect3D vecty);
     Plane(const Plane& plane);
 
-    double getWidth() const;
-    double getHeight() const;
+    double width() const;
+    double height() const;
 
     Vect3D normal(Point3D surface_pt) const override;
     Vect3D tangent(Point3D surface_pt) const override;
