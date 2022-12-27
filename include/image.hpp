@@ -8,17 +8,6 @@
 #define INIT_WIDTH 600
 #define INIT_HEIGHT 400
 
-/* screenSize
- *
- * Contain a screen size with a width and height.
- *
- */
-struct screenSize {
-  size_t width;
-  size_t height;
-};
-typedef struct screenSize screenSize;
-
 class Image {
 protected:
   screenSize size;

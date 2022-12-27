@@ -1,5 +1,5 @@
 #pragma once
-#include "image.hpp"
+
 #include "maths.hpp"
 #include "ray.hpp"
 

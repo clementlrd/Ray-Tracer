@@ -2,6 +2,17 @@
 
 #include <cstdint>
 
+/* screenSize
+ *
+ * Contain a screen size with a width and height.
+ *
+ */
+struct screenSize {
+  size_t width;
+  size_t height;
+};
+typedef struct screenSize screenSize;
+
 template <typename T>
 T max(const T& a, const T& b) {
   return a > b ? a : b;
