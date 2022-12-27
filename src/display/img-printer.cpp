@@ -7,8 +7,8 @@ void printer::ppm(Image image) {
   std::cout << "P3\n"
             << currentSize.width << ' ' << currentSize.height << "\n255\n";
 
-  for (size_t j = currentSize.height; j > 0; j--) {
-    for (size_t i = 0; i < currentSize.width; i++) {
+  for (int j = (int)currentSize.height - 1; j >= 0; --j) {
+    for (int i = 0; i < (int)currentSize.width; ++i) {
       Color current_color = image(i, j);
       const RGB_color rgb = current_color.getRGBColor();
       std::cout << (int)rgb.r << ' ' << (int)rgb.g << ' ' << (int)rgb.b << '\n';
