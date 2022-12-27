@@ -9,7 +9,7 @@ using obj::Camera;
 using obj::Scene;
 
 Cuboid::Cuboid()
-    : Object(origin),
+    : Object(Point3D(0, 0, 0)),
       vectx(Vect3D(1, 0, 0)),
       vecty(Vect3D(0, 1, 0)),
       vectz(Vect3D(0, 0, 1)) {};
@@ -53,6 +53,18 @@ Vect3D Cuboid::tangent(Point3D surface_pt) const {
   } else {
     throw std::invalid_argument("Not a surface point !");
   }
+};
+
+Sphere::Sphere() : Object(Point3D(0, 0, 0)), radius(1.0) {};
+
+Sphere::Sphere(Point3D origin, double radius)
+    : Object(origin), radius(radius) {};
+
+Sphere::Sphere(const Sphere& sphere)
+    : Object(sphere.origin), radius(sphere.radius) {};
+
+Vect3D Sphere::normal(Point3D surface_pt) const {
+  return unit(Vect3D(origin, surface_pt));
 };
 
 Camera::Camera()
