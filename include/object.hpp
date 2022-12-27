@@ -33,6 +33,7 @@ namespace obj {
     Point3D origin;
 
   public:
+    Object(Point3D origin) : origin(origin) {};
     virtual Vect3D normal(Point3D surface_pt)
         const = 0; // weird for camera for example... useful ?
     virtual Vect3D tangent(Point3D surface_pt)
@@ -56,7 +57,7 @@ namespace obj {
     Vect3D vectz;
 
   public:
-    Cuboid();
+    Cuboid(); // Cube with side = 1
     Cuboid(Point3D origin, Vect3D vectx, Vect3D vecty, Vect3D vectz);
     Cuboid(const Cuboid& cuboid);
 

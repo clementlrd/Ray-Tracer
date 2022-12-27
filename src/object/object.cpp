@@ -8,6 +8,53 @@ using obj::Camera;
 
 using obj::Scene;
 
+Cuboid::Cuboid()
+    : Object(origin),
+      vectx(Vect3D(1, 0, 0)),
+      vecty(Vect3D(0, 1, 0)),
+      vectz(Vect3D(0, 0, 1)) {};
+
+Cuboid::Cuboid(Point3D origin, Vect3D vectx, Vect3D vecty, Vect3D vectz)
+    : Object(origin), vectx(vectx), vecty(vecty), vectz(vectz) {};
+
+Cuboid::Cuboid(const Cuboid& cuboid)
+    : Object(cuboid.origin),
+      vectx(cuboid.vectx),
+      vecty(cuboid.vecty),
+      vectz(cuboid.vectz) {};
+
+Vect3D Cuboid::normal(Point3D surface_pt) const {
+  Vect3D relative = surface_pt - origin;
+  if (relative.x() == 0) {
+    return Vect3D(0, 0, 0) - unit(vectx);
+  } else if (relative.y() == 0) {
+    return Vect3D(0, 0, 0) - unit(vecty);
+  } else if (relative.z() == 0) {
+    return Vect3D(0, 0, 0) - unit(vectz);
+  } else if (relative.x() == vectx.norm()) {
+    return unit(vectx);
+  } else if (relative.y() == vecty.norm()) {
+    return unit(vecty);
+  } else if (relative.z() == vectz.norm()) {
+    return unit(vectz);
+  } else {
+    throw std::invalid_argument("Not a surface point !");
+  }
+};
+
+Vect3D Cuboid::tangent(Point3D surface_pt) const {
+  Vect3D relative = surface_pt - origin;
+  if (relative.x() == 0 || relative.x() == vectx.norm()) {
+    return unit(vecty);
+  } else if (relative.y() == 0 || relative.y() == vecty.norm()) {
+    return unit(vectz);
+  } else if (relative.z() == 0 || relative.z() == vectz.norm()) {
+    return unit(vectx);
+  } else {
+    throw std::invalid_argument("Not a surface point !");
+  }
+};
+
 Camera::Camera()
     : size_cam({ 3, 4 }), focal_length(1.0), origin(Point3D(0, 0, 0)) {};
 
